@@ -1,0 +1,7 @@
+# .codexignore（例） - 機密ファイルを除外
+*.env
+*.key
+*.pem
+config/secrets.*
+private/
+.ssh/
