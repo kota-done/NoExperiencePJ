@@ -1,1 +1,46 @@
 /docs
+### Maven ###
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+*.log
+
+### IntelliJ IDEA / Eclipse / VSCode ###
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+
+### OS Files ###
+.DS_Store
+Thumbs.db
+
+### Java ###
+*.class
+
+### Logs ###
+*.log
+logs/
+
+### Environment / Secret Files ###
+*.env
+*.key
+*.pem
+secrets/
+private/
+config/secrets.*
+
+### Spring Boot application config ###
+src/main/resources/application.properties
+src/main/resources/application.yml
+src/main/resources/application-*.properties
+src/main/resources/application-*.yml
+
+### Database / Sensitive ###
+*.db
+*.sql
+
+### Codex / その他 AI ツールの設定 ###
+.codex/
