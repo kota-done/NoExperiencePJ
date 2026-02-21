@@ -1,4 +1,6 @@
-/docs
+# docs は管理対象。機微情報だけ docs/private/ に隔離して除外する
+docs/private/*
+!docs/private/.gitkeep
 ### Maven ###
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -26,11 +28,15 @@ logs/
 
 ### Environment / Secret Files ###
 *.env
+*.env.*
 *.key
 *.pem
-secrets/
-private/
+/secrets/
+/private/
 config/secrets.*
+*.jks
+*.p12
+*.pfx
 
 ### Spring Boot application config ###
 src/main/resources/application.properties
@@ -44,3 +50,11 @@ src/main/resources/application-*.yml
 
 ### Codex / その他 AI ツールの設定 ###
 .codex/
+
+### Docker_MySQL local runtime files ###
+Docker_MySQL/.env*
+!Docker_MySQL/.env.example
+Docker_MySQL/secrets/*
+!Docker_MySQL/secrets/.gitkeep
+Docker_MySQL/config/local/*
+!Docker_MySQL/config/local/.gitkeep
