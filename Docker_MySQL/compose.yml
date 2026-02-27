@@ -1,0 +1,12 @@
+services:
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: noexperience-mysql
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env.local
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d:ro
