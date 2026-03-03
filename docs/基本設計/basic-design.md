@@ -1,0 +1,103 @@
+# 基本設計メモ
+
+## 1. 文書情報
+- プロジェクト名: springboot-thymeleaf-crud-web-app
+- 作成日: 2026-02-17
+- 対象: 従業員情報の CRUD、一覧表示、ページング、ソート機能
+- 技術スタック: Java 17 / Spring Boot 3 / Spring MVC / Thymeleaf / Spring Data JPA / MySQL / Maven
+
+## 2. システム概要
+- 本システムは、従業員情報を管理する Web アプリケーションである。
+- ブラウザから MVC 画面へアクセスし、従業員情報の登録・更新・削除・一覧参照を行う。
+- 一覧画面ではページングとソートを提供する。
+
+## 3. アーキテクチャ方針
+- 3 層構成を採用する。
+- プレゼンテーション層: Spring MVC Controller + Thymeleaf テンプレート
+- アプリケーション層: Service インタフェース/実装
+- データアクセス層: Spring Data JPA Repository
+
+## 4. パッケージ設計
+- `com.dev.raise.controller`
+  - `EmployeeController`: 画面遷移・リクエスト処理
+- `com.dev.raise.service`
+  - `EmployeeService`: ユースケース定義
+  - `EmployeeServiceImpl`: 業務処理実装
+- `com.dev.raise.repository`
+  - `EmployeeRepository`: 永続化インタフェース
+- `com.dev.raise.model`
+  - `Employee`: 従業員エンティティ
+
+## 5. 機能設計
+### 5.1 一覧表示
+- URL: `GET /`
+- 処理:
+  - 1 ページ目を既定として一覧取得
+  - 既定ソート: `firstName` 昇順
+  - テンプレート `index.html` を返却
+
+### 5.2 新規作成画面表示
+- URL: `GET /showNewEmployeeForm`
+- 処理:
+  - 空の `Employee` をモデルに設定
+  - テンプレート `new_employee.html` を返却
+
+### 5.3 登録/更新保存
+- URL: `POST /saveEmployee`
+- 処理:
+  - フォーム入力を `Employee` にバインド
+  - `save` により新規または更新を実施
+  - 完了後に `/` へリダイレクト
+
+### 5.4 更新画面表示
+- URL: `GET /showFormForUpdate/{id}`
+- 処理:
+  - ID 指定で対象データを取得
+  - テンプレート `update_employee.html` を返却
+
+### 5.5 削除
+- URL: `GET /deleteEmployee/{id}`
+- 処理:
+  - ID 指定で削除
+  - 完了後に `/` へリダイレクト
+
+### 5.6 ページング/ソート
+- URL: `GET /page/{pageNo}?sortField={field}&sortDir={asc|desc}`
+- 処理:
+  - 1 ページあたり 5 件
+  - 指定項目/方向でソート
+  - 総件数・総ページ数・現在ページをモデルに設定
+
+## 6. データ設計
+### 6.1 エンティティ: Employee
+- テーブル名: `employees`
+- カラム:
+  - `id`: `BIGINT`, PK, 自動採番 (`IDENTITY`)
+  - `first_name`: `VARCHAR`
+  - `last_name`: `VARCHAR`
+  - `email`: `VARCHAR`
+
+## 7. 画面設計
+- `index.html`
+  - 従業員一覧表示
+  - ソートリンク、ページリンク、更新/削除ボタン
+- `new_employee.html`
+  - 新規登録フォーム
+- `update_employee.html`
+  - 更新フォーム（hidden で `id` 保持）
+
+## 8. 例外・エラー方針
+- `getEmployeeById` で対象なしの場合は `RuntimeException` を送出する。
+- 画面向けの共通エラーハンドリングは未実装のため、今後追加余地あり。
+
+## 9. 非機能要件メモ
+- DB 接続先: MySQL (`application.properties` で指定)
+- ORM: Hibernate (`ddl-auto=update`)
+- ログ: SQL/型トレースを有効化
+- 認証/認可: 未実装
+
+## 10. 今後の拡張候補
+- 入力バリデーション（Bean Validation）
+- 例外ハンドリング（`@ControllerAdvice`）
+- API 層の追加（REST Controller）
+- 監査項目（作成日時/更新日時）追加

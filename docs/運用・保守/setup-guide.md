@@ -1,0 +1,179 @@
+# ソース取得からアプリ起動までの手順
+
+本手順は macOS / Windows を想定する。
+- macOS は Tahoe 26.3 で動作確認済み。
+- Windows は未確認のため、同手順で動作しない場合は追加確認が必要。
+
+## 事前準備
+
+### 前提ソフト
+
+以下のソフトがインストール済みであること。
+
+| ソフト | 用途 | バージョン目安 | 公式URL |
+|--------|------|----------------|---------|
+| Git | ソースコード取得 | 最新安定版 | [公式サイト](https://git-scm.com/downloads/) |
+| JDK | Spring Boot アプリ実行 | 17 以上 | [Java 17 ダウンロード](https://www.oracle.com/java/technologies/downloads/#java17) |
+| Docker（macOS） | MySQL コンテナ起動 | 最新安定版 | [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop/) |
+| Docker（Windows） | MySQL コンテナ起動 | 最新安定版 | [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/) |
+
+補足:
+- プロジェクト定義上の Java バージョンは 17 である。
+- 17 以上でも動作する可能性はあるが、学習環境としては Java 17 を推奨する。
+
+### インストール確認方法
+
+#### Git
+```bash
+git --version
+which git
+```
+
+#### JDK
+```bash
+java -version
+which java
+```
+
+#### Docker
+```bash
+docker --version
+docker compose version
+which docker
+```
+
+## 1. ソースを取得する
+```bash
+git clone https://github.com/kota-done/NoExperiencePJ.git
+cd クローン先フォルダ
+```
+
+補足:
+- `クローン先フォルダ` とは、`git clone` 実行後に作成されるプロジェクトのローカルフォルダを指す。
+- 今回は通常 `NoExperiencePJ` フォルダが作成されるため、実際には以下になる。
+
+```bash
+cd NoExperiencePJ
+```
+
+## 2. Docker 用の環境変数ファイルを作成する
+```bash
+cp Docker_MySQL/.env.example Docker_MySQL/.env.local
+```
+
+## 3. `.env.local` を確認する
+`Docker_MySQL/.env.local` に以下を設定する。
+
+```env
+MYSQL_ROOT_PASSWORD=root
+MYSQL_DATABASE=demo
+```
+
+## 4. MySQL コンテナを起動する
+```bash
+cd Docker_MySQL
+docker compose up --build -d
+```
+
+補足:
+- `--build` はイメージをビルドしてから起動する。
+- `-d` はバックグラウンドで起動する。
+
+## 5. MySQL コンテナが起動したことを確認する
+```bash
+docker compose ps
+```
+
+必要に応じてログ確認:
+```bash
+docker compose logs -f
+```
+
+## 6. DB 初期化結果を確認する
+```bash
+docker exec -it noexperience-mysql mysql -uroot -proot -e "USE demo; SHOW TABLES; SELECT * FROM employees;"
+```
+
+期待結果:
+- `employees` テーブルが存在する
+- 初期データ 3 件が表示される
+
+## 7. 初期導入 SQL を確認する
+初期導入用の SQL は配布物として別ファイル提供していないため、必要な場合は以下を参考にローカルで作成する。
+
+### `Docker_MySQL/init/01_schema.sql`
+```sql
+CREATE TABLE IF NOT EXISTS employees (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  first_name VARCHAR(255),
+  last_name VARCHAR(255),
+  email VARCHAR(255),
+  PRIMARY KEY (id)
+);
+```
+
+### `Docker_MySQL/init/02_data.sql`
+```sql
+INSERT INTO employees (first_name, last_name, email) VALUES
+  ('Taro', 'Yamada', 'taro.yamada@example.com'),
+  ('Hanako', 'Suzuki', 'hanako.suzuki@example.com'),
+  ('Ken', 'Tanaka', 'ken.tanaka@example.com');
+```
+
+## 8. プロジェクトルートへ戻る
+```bash
+cd /Applications/個人開発/CodeX/NoExperiencePJ
+```
+
+## 9. `application.properties` を作成する
+`src/main/resources/application.properties` は `.gitignore` 対象のため、リポジトリには含まれない。
+そのため、各自のローカル環境で接続情報を持つファイルとして手動作成する。
+
+```bash
+cat > src/main/resources/application.properties <<'EOF_APP'
+# DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+spring.datasource.url=jdbc:mysql://localhost:3306/demo?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+spring.datasource.username=root
+spring.datasource.password=root
+
+# Hibernate
+
+# The SQL dialect makes Hibernate generate better SQL for the chosen database
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQLDialect
+
+# Hibernate ddl auto (create, create-drop, validate, update)
+spring.jpa.hibernate.ddl-auto = validate
+
+logging.level.org.hibernate.SQL=DEBUG
+logging.level.org.hibernate.type=TRACE
+EOF_APP
+```
+
+## 10. Spring Boot アプリを起動する
+プロジェクトルートで実行する。
+
+```bash
+./mvnw spring-boot:run
+```
+
+## 11. ブラウザで画面を確認する
+以下へアクセスする。
+
+[http://localhost:8080](http://localhost:8080)
+
+期待結果:
+- 従業員一覧画面が表示される
+- 初期データ 3 件が一覧に表示される
+
+## 12. アプリを停止する
+Spring Boot を起動しているターミナルで以下を実行する。
+
+```bash
+Ctrl + C
+```
+
+## 13. Docker を停止する
+```bash
+cd Docker_MySQL
+docker compose down
+```

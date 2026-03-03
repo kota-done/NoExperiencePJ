@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="520" viewBox="0 0 1600 520">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+    </marker>
+    <style>
+      .box { rx: 12; ry: 12; stroke-width: 2; }
+      .label { font-family: Arial, sans-serif; font-size: 20px; fill: #111; }
+      .edge { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .edge-label { font-family: Arial, sans-serif; font-size: 16px; fill: #333; }
+      .title { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; fill: #111; }
+    </style>
+  </defs>
+
+  <text x="40" y="44" class="title">System Overview (Spring Boot + Thymeleaf + MySQL)</text>
+
+  <rect x="40" y="210" width="220" height="80" class="box" fill="#dae8fc" stroke="#6c8ebf"/>
+  <text x="72" y="257" class="label">利用者（ブラウザ）</text>
+
+  <rect x="330" y="195" width="310" height="100" class="box" fill="#d5e8d4" stroke="#82b366"/>
+  <text x="360" y="240" class="label">Spring MVC Controller</text>
+  <text x="390" y="268" class="label">EmployeeController</text>
+
+  <rect x="720" y="80" width="350" height="100" class="box" fill="#fff2cc" stroke="#d6b656"/>
+  <text x="775" y="125" class="label">Thymeleaf Templates</text>
+  <text x="800" y="153" class="label">index/new/update</text>
+
+  <rect x="720" y="220" width="350" height="100" class="box" fill="#f8cecc" stroke="#b85450"/>
+  <text x="820" y="265" class="label">Service Layer</text>
+  <text x="758" y="293" class="label">EmployeeService / EmployeeServiceImpl</text>
+
+  <rect x="1140" y="220" width="360" height="100" class="box" fill="#e1d5e7" stroke="#9673a6"/>
+  <text x="1240" y="265" class="label">Repository Layer</text>
+  <text x="1175" y="293" class="label">EmployeeRepository (JpaRepository)</text>
+
+  <ellipse cx="1540" cy="240" rx="50" ry="18" fill="#ffe6cc" stroke="#d79b00" stroke-width="2"/>
+  <rect x="1490" y="240" width="100" height="80" fill="#ffe6cc" stroke="#d79b00" stroke-width="2"/>
+  <ellipse cx="1540" cy="320" rx="50" ry="18" fill="#ffd7a8" stroke="#d79b00" stroke-width="2"/>
+  <text x="1510" y="273" class="label">MySQL</text>
+  <text x="1498" y="301" class="label">employees</text>
+
+  <path d="M 260 250 L 330 245" class="edge"/>
+  <text x="270" y="232" class="edge-label">HTTP GET/POST</text>
+
+  <path d="M 640 215 C 680 170, 700 140, 720 130" class="edge"/>
+  <text x="645" y="155" class="edge-label">Model を設定</text>
+
+  <path d="M 720 165 C 610 150, 450 130, 220 205" class="edge"/>
+  <text x="445" y="120" class="edge-label">HTML レンダリング</text>
+
+  <path d="M 640 255 L 720 265" class="edge"/>
+  <text x="642" y="286" class="edge-label">業務処理呼び出し</text>
+
+  <path d="M 1070 270 L 1140 270" class="edge"/>
+  <text x="1072" y="254" class="edge-label">CRUD/検索</text>
+
+  <path d="M 1500 270 L 1490 270" class="edge"/>
+  <text x="1450" y="250" class="edge-label">JPA/Hibernate</text>
+</svg>

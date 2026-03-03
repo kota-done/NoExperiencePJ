@@ -1,0 +1,14 @@
+flowchart LR
+    U["利用者（ブラウザ）"]
+    C["Spring MVC Controller\nEmployeeController"]
+    V["Thymeleaf Templates\nindex/new/update"]
+    S["Service Layer\nEmployeeService / EmployeeServiceImpl"]
+    R["Repository Layer\nEmployeeRepository (JpaRepository)"]
+    DB["MySQL\nemployees"]
+
+    U -->|HTTP GET/POST| C
+    C -->|Model を設定| V
+    V -->|HTML レンダリング| U
+    C -->|業務処理呼び出し| S
+    S -->|CRUD/検索| R
+    R -->|JPA/Hibernate| DB
