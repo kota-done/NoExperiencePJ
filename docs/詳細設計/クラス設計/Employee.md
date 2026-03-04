@@ -36,8 +36,24 @@
 - 役割: メールアドレス
 - カラム名: `email`
 
+### status
+- 型: `EmployeeStatus`
+- 役割: 従業員の現在ステータス
+- 想定値:
+  - `ON_ASSIGNMENT`
+  - `WAITING`
+  - `LEAVE_OF_ABSENCE`
+  - `TRAINING`
+
+### clientCompany
+- 型: `ClientCompany`
+- 役割: 所属する派遣先企業
+- 関連: `ManyToOne`
+- 外部キー: `client_company_id`
+
 ## メソッド
 - getter / setter のみ
 
 ## 備考
 - 現状はバリデーションアノテーション未付与。
+- 一覧画面では `clientCompany.companyName` と `status` を表示対象に含める。
