@@ -1,11 +1,11 @@
-# EmployeeRepository
+# DirectEmployeeRepository
 
 ## 概要
-- `Employee` エンティティの永続化アクセスを担当するリポジトリ。
+- `DirectEmployee` エンティティの永続化アクセスを担当するリポジトリ。
 
 ## 配置
-- パッケージ: `com.dev.raise.repository`
-- ソース: `src/main/java/com/dev/raise/repository/EmployeeRepository.java`
+- パッケージ: `com.company.training.java.repository`
+- ソース: `src/main/java/com/company/training/java/repository/DirectEmployeeRepository.java`
 
 ## 主な責務
 - 従業員データの CRUD
@@ -13,13 +13,13 @@
 - 所属派遣先企業を含めた従業員データ参照
 
 ## 継承
-- `JpaRepository<Employee, Long>`
+- `JpaRepository<DirectEmployee, Long>`
 
 ## 利用可能な主な操作
 - `findAll()`
 - `findAll(Pageable pageable)`
 - `findById(Long id)`
-- `save(Employee employee)`
+- `save(DirectEmployee employee)`
 - `deleteById(Long id)`
 
 ## 備考

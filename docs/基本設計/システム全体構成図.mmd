@@ -5,14 +5,14 @@ flowchart LR
         end
 
         V["Thymeleaf Templates\nemployee/*\nclient-company/*"]
-        C["Spring MVC Controller\nEmployeeController\nClientCompanyController"]
-        S["Service Layer\nEmployeeService / EmployeeServiceImpl\nClientCompanyService / ClientCompanyServiceImpl"]
-        M["Domain Model\nEmployee\nClientCompany"]
-        R["Repository Layer\nEmployeeRepository\nClientCompanyRepository"]
+        C["Spring MVC Controller\nDirectEmployeeController\nClientCompanyController"]
+        S["Service Layer\nDirectEmployeeService / DirectEmployeeServiceImpl\nClientCompanyService / ClientCompanyServiceImpl"]
+        M["Domain Model\nDirectEmployee\nClientCompany\n(client_company: charge/prefectureName含む)"]
+        R["Repository Layer\nDirectEmployeeRepository\nClientCompanyRepository"]
     end
 
     subgraph D["Docker Compose"]
-        DB["MySQL\nemployees\nclient_companies"]
+        DB["MySQL\ndirect_employees\nclient_companies"]
     end
 
     U -->|HTTP GET/POST| C

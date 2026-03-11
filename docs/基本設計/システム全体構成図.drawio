@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="system-overview" name="System Overview">
-        <mxGraphModel dx="2010" dy="1036" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+        <mxGraphModel dx="873" dy="270" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -25,19 +25,19 @@
                 <mxCell id="e6" value="JPA/Hibernate" style="endArrow=block;endFill=1;html=1;rounded=0;" parent="1" source="r" target="db" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="2" value="" style="shape=actor;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="2" value="" style="shape=actor;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="50" y="190" width="40" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="Docker Composer" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="3" value="Docker Composer" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="1240" y="315" width="200" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Docker.svg;" vertex="1" parent="1">
+                <mxCell id="4" value="" style="image;sketch=0;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/mscae/Docker.svg;" parent="1" vertex="1">
                     <mxGeometry x="1200" y="250" width="50" height="41" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" value="" style="swimlane;startSize=0;" vertex="1" parent="1">
+                <mxCell id="6" value="" style="swimlane;startSize=0;" parent="1" vertex="1">
                     <mxGeometry x="1200" y="300" width="270" height="255" as="geometry"/>
                 </mxCell>
-                <mxCell id="10" value="Local PC" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud;strokeColor=#232F3E;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#232F3E;dashed=0;" vertex="1" parent="1">
+                <mxCell id="10" value="Local PC" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud;strokeColor=#232F3E;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#232F3E;dashed=0;" parent="1" vertex="1">
                     <mxGeometry x="20" y="20" width="1510" height="600" as="geometry"/>
                 </mxCell>
                 <mxCell id="c" value="Spring MVC Controller&#xa;EmployeeController" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" parent="10" vertex="1">
@@ -52,13 +52,13 @@
                 <mxCell id="e4" value="業務処理呼び出し" style="endArrow=block;endFill=1;html=1;rounded=0;" parent="10" source="c" target="s" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="15" value="Java Application(Spring boot)" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="10">
+                <mxCell id="15" value="Java Application(Spring boot)" style="swimlane;whiteSpace=wrap;html=1;" parent="10" vertex="1">
                     <mxGeometry x="260" y="10" width="810" height="490" as="geometry"/>
                 </mxCell>
                 <mxCell id="v" value="Thymeleaf Templates&#xa;index/new/update" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" parent="15" vertex="1">
                     <mxGeometry x="90" y="50" width="280" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="11" value="User Browser(Chrome)" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                <mxCell id="11" value="User Browser(Chrome)" style="swimlane;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="30" y="150" width="220" height="240" as="geometry"/>
                 </mxCell>
             </root>

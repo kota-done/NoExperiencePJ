@@ -5,8 +5,8 @@
 - アプリケーション全体の開始点を担う。
 
 ## 配置
-- パッケージ: `com.dev.raise`
-- ソース: `src/main/java/com/dev/raise/SpringbootThymeleafCrudWebAppApplication.java`
+- パッケージ: `com.company.training.java`
+- ソース: `src/main/java/com/company/training/java/SpringbootThymeleafCrudWebAppApplication.java`
 
 ## 主な責務
 - `SpringApplication.run(...)` を実行して Spring Boot を起動する。

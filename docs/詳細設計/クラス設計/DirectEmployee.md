@@ -1,19 +1,19 @@
-# Employee
+# DirectEmployee
 
 ## 概要
 - 従業員情報を表す JPA エンティティ。
-- `employees` テーブルに対応する。
+- `direct_employees` テーブルに対応する。
 
 ## 配置
-- パッケージ: `com.dev.raise.model`
-- ソース: `src/main/java/com/dev/raise/model/Employee.java`
+- パッケージ: `com.company.training.java.model`
+- ソース: `src/main/java/com/company/training/java/model/DirectEmployee.java`
 
 ## 主な責務
 - 従業員データの保持
 - JPA エンティティとしてのマッピング定義
 
 ## テーブル対応
-- テーブル名: `employees`
+- テーブル名: `direct_employees`
 
 ## 項目
 ### id
@@ -37,7 +37,7 @@
 - カラム名: `email`
 
 ### status
-- 型: `EmployeeStatus`
+- 型: `DirectEmployeeStatus`
 - 役割: 従業員の現在ステータス
 - 想定値:
   - `ON_ASSIGNMENT`

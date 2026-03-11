@@ -4,8 +4,8 @@
 - 派遣先企業の取引ステータスを表す列挙型。
 
 ## 配置
-- パッケージ: `com.dev.raise.model` または `com.dev.raise.enums`
-- ソース: `src/main/java/com/dev/raise/.../BusinessStatus.java`
+- パッケージ: `com.company.training.java.model` または `com.company.training.java.enums`
+- ソース: `src/main/java/com/company/training/java/.../BusinessStatus.java`
 
 ## 値
 - `ACTIVE`

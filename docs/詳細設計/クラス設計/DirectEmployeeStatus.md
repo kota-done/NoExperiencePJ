@@ -1,11 +1,11 @@
-# EmployeeStatus
+# DirectEmployeeStatus
 
 ## 概要
 - 従業員の現在ステータスを表す列挙型。
 
 ## 配置
-- パッケージ: `com.dev.raise.model` または `com.dev.raise.enums`
-- ソース: `src/main/java/com/dev/raise/.../EmployeeStatus.java`
+- パッケージ: `com.company.training.java.model` または `com.company.training.java.enums`
+- ソース: `src/main/java/com/company/training/java/.../DirectEmployeeStatus.java`
 
 ## 値
 - `ON_ASSIGNMENT`

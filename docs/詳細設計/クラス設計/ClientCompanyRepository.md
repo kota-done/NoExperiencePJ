@@ -4,8 +4,8 @@
 - `ClientCompany` エンティティの永続化アクセスを担当するリポジトリ。
 
 ## 配置
-- パッケージ: `com.dev.raise.repository`
-- ソース: `src/main/java/com/dev/raise/repository/ClientCompanyRepository.java`
+- パッケージ: `com.company.training.java.repository`
+- ソース: `src/main/java/com/company/training/java/repository/ClientCompanyRepository.java`
 
 ## 主な責務
 - 派遣先企業データの CRUD

@@ -5,8 +5,8 @@
 - `client_companies` テーブルに対応する。
 
 ## 配置
-- パッケージ: `com.dev.raise.model`
-- ソース: `src/main/java/com/dev/raise/model/ClientCompany.java`
+- パッケージ: `com.company.training.java.model`
+- ソース: `src/main/java/com/company/training/java/model/ClientCompany.java`
 
 ## 主な責務
 - 派遣先企業データの保持
@@ -25,6 +25,16 @@
 - 型: `String`
 - 役割: 企業名
 - カラム名: `company_name`
+
+### charge
+- 型: `BigDecimal`
+- 役割: 単価
+- カラム名: `charge`
+
+### prefectureName
+- 型: `String`
+- 役割: 都道府県名
+- カラム名: `prefecture_name`
 
 ### contactEmail
 - 型: `String`
